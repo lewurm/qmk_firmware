@@ -135,6 +135,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    )
 };
 
+// Combo Stuff
+enum combo_events {
+  ZC_COPY,
+  XV_PASTE,
+  SPC_NUM
+};
+
+const uint16_t PROGMEM copy_combo[] = {_XALT, _CGUI, COMBO_END};
+const uint16_t PROGMEM paste_combo[] = {_CGUI, KC_V, COMBO_END};
+const uint16_t PROGMEM numlayer_combo[] = {22278, 16940, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [ZC_COPY] = COMBO_ACTION(copy_combo),
+  [XV_PASTE] = COMBO_ACTION(paste_combo),
+  [SPC_NUM] = COMBO_ACTION(numlayer_combo),
+};
+
+void process_combo_event(uint8_t combo_index, bool pressed) {
+  uprintf("Combo Event: index: %u (%d)\n", combo_index, pressed);
+  switch(combo_index) {
+    case ZC_COPY:
+      if (pressed) {
+        tap_code16(LGUI(KC_C));
+      }
+      break;
+    case XV_PASTE:
+      if (pressed) {
+        tap_code16(LGUI(KC_V));
+      }
+      break;
+    case SPC_NUM:
+
+      if (pressed) {
+        uprintf("num on");
+        layer_on(_NUMBERS);
+      }else{
+        uprintf("num off");
+        layer_off(_NUMBERS);
+      }
+    break;
+  }
+}
+
 // Tap Dance Stuff
 
 typedef struct {
@@ -298,8 +341,8 @@ void dance_quote_finished (qk_tap_dance_state_t *state, void *user_data) {
         register_code (KC_RSFT);
         register_code (KC_QUOT);
         break;
-    case HOLD:
-        layer_on(_NUMBERS);
+    // case HOLD:
+        // layer_on(_NUMBERS);
     }
 }
 
@@ -312,8 +355,8 @@ void dance_quote_reset (qk_tap_dance_state_t *state, void *user_data) {
         unregister_code (KC_RSFT);
         unregister_code (KC_QUOT);
         break;
-    case HOLD:
-        layer_off(_NUMBERS);
+    // case HOLD:
+        // layer_off(_NUMBERS);
     }
     dance_quote_state = -1;
 }
@@ -381,12 +424,21 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 };
 // Custom tapping terms
 
-#define TAPPING_TERM 250
+#define TAPPING_TERM 150
 uint16_t get_tapping_term(uint16_t keycode) {
+
+//   uprintf("Looking for TappingTerm: kc: %u (%u?)\n", keycode, _SPCNAV);
   switch (keycode) {
-    // case TD_ENTGUI:
-    //   return 190;
+    case _SPCNAV:
+        return 200;
+    case TD_ENTGUI:
+       return 190;
     case _SLSHCTL:
+    case _CGUI:
+    case _XALT:
+    case _ZCTL:
+    case _COMGUI:
+    case _DOTALT:
       return 300;
     default:
       return TAPPING_TERM;
@@ -454,12 +506,13 @@ uint32_t layer_state_set_user(uint32_t state) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  uprintf("process user record %u (pressed? %d)\n", keycode, record->event.pressed);
   switch (keycode) {
     case TOGGLE_LIGHTS:
     if (!record->event.pressed) {
         toggle_layer_mode();
     }
-      return false;
+    return false;
     case BRIGHTER:
     if (!record->event.pressed) {
         rgblight_increase_val_noeeprom();

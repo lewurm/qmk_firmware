@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_VAL_STEP 8
 #define TAPPING_TERM_PER_KEY
 #define IGNORE_MOD_TAP_INTERRUPT
-#define PERMISSIVE_HOLD
+// #define PERMISSIVE_HOLD
 #define RGBLIGHT_SLEEP
 // #define TAPPING_FORCE_HOLD
 // #define RETRO_TAPPING
@@ -35,3 +35,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 #define RGBLIGHT_EFFECT_KNIGHT
 #define RGBLIGHT_EFFECT_STATIC_GRADIENT
+#define COMBO_COUNT 4
+#define COMBO_TERM 150
+#define COMBO_ALLOW_ACTION_KEYS
