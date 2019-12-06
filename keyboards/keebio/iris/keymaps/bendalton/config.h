@@ -35,6 +35,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 #define RGBLIGHT_EFFECT_KNIGHT
 #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-#define COMBO_COUNT 4
-#define COMBO_TERM 150
+#define COMBO_COUNT 6
+#define COMBO_TERM 100
 #define COMBO_ALLOW_ACTION_KEYS

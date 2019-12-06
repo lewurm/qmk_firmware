@@ -26,7 +26,13 @@ enum my_keycodes {
 #define _NUMBERS 5
 
 #define _CODE MO(_COMMAND)
+#define _SYM MO(_SYMBOLS)
+#define _NUM MO(_NUMBERS)
 #define _FSYM LT(_SYMBOLS,KC_F)
+#define _ASFT LSFT_T(KC_Z)
+#define _SLSHFT LSFT_T(KC_SLSH)
+#define _XALT LALT_T(KC_X)
+#define _CGUI LGUI_T(KC_C)
 #define _ZCTL LCTL_T(KC_Z)
 #define _XALT LALT_T(KC_X)
 #define _CGUI LGUI_T(KC_C)
@@ -46,6 +52,26 @@ enum my_keycodes {
 #define _TD_QUOTE TD(TD_QUOTE)
 #define _TD_NUMTERM TD(TD_NUMTERM)
 #define _WINMODE MAGIC_TOGGLE_CTL_GUI
+#define _SFT_BSPC LSFT_T(KC_BSPC)
+#define _SFT_DEL LSFT_T(KC_DEL)
+
+
+
+#define ALT_K LALT_T(KC_K)
+#define ALT_S LALT_T(KC_S)
+#define ALT_D LALT_T(KC_D)
+#define CTRL_L LCTL_T(KC_L)
+#define CTRL_S LCTL_T(KC_S)
+#define GUI_F LGUI_T(KC_F)
+#define GUI_J LGUI_T(KC_J)
+#define SFT_A LSFT_T(KC_A)
+#define SFT_O LSFT_T(KC_O)
+#define SFT_SCLN LSFT_T(KC_SCLN)
+#define SYM_OS OSL(_SYMBOLS)
+#define SYS_Z LT(_SYS, KC_Z)
+#define VOL_DN S(LALT(KC__VOLDOWN))
+#define VOL_UP S(LALT(KC__VOLUP))
+
 #define ____ KC_NO
 
 
@@ -53,29 +79,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-      KC_GESC,  ____,    ____,    ____,    ____,    ____,                               ____,    ____,    ____,    ____,    ____,   _TD_DASH,
+      ____,  ____,    ____,    ____,    ____,    ____,                                 ____,    ____,    ____,    ____,    ____,    ____,
   //    KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _TD_DASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   KC_BSLS,
+      ____,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      _CODE,    KC_A,    KC_S,    KC_D,   KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,   _TD_CLN, _TD_QUOTE,
+      ____,    SFT_A,   CTRL_S,  ALT_D,   GUI_F,   KC_G,                               KC_H,    GUI_J,   ALT_K,   CTRL_L, SFT_SCLN,  ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT,  _ZCTL,   _XALT,   _CGUI,    KC_V,    KC_B,  _TD_CP,        _TD_NUMTERM, KC_N,    KC_M,   _COMGUI, _DOTALT, _SLSHCTL, KC_RSFT,
+      ____,    KC_Z,   _XALT,   _CGUI,    KC_V,    KC_B,    ____,              ____,   KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, ____,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                   MO(_NAV), KC_DEL,  _TD_ENTGUI,                _SPCNAV, KC_BSPC,  MO(_SYMBOLS)
+                                     _NUM,   _SFT_DEL,_TD_ENTGUI,                _SPCNAV, _SFT_BSPC, SYM_OS
   //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
     ),
 
     [_COLEMAK] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GESC,  ____,    ____,    ____,    ____,    ____,                               ____,    ____,    ____,    ____,    ____,   _TD_DASH,
+      ____,  ____,    ____,    ____,    ____,    ____,                               ____,    ____,    ____,    ____,    ____,    ____,
   //    KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _TD_DASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_TAB,   KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                               KC_J,    KC_L,    KC_U,    KC_Y,    _TD_CLN, KC_BSLS,
+      ____,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                               KC_J,    KC_L,    KC_U,    KC_Y,    _TD_CLN, ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      _CODE,    KC_A,    KC_R,    KC_S,   KC_T,    KC_D,                                KC_H,    KC_N,    KC_E,    KC_I,    KC_O,   _TD_QUOTE,
+       ____,   KC_A,    KC_R,    KC_S,   KC_T,    KC_D,                                KC_H,    KC_N,    KC_E,    KC_I,    KC_O,   ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT,  _ZCTL,   _XALT,   _CGUI,    KC_V,    KC_B,  _TD_CP,        _TD_NUMTERM, KC_K,    KC_M,   _COMGUI, _DOTALT, _SLSHCTL, KC_RSFT,
+      ____,   _ZCTL,   _XALT,   _CGUI,    KC_V,     KC_B,   ____,                ____,   KC_K,    KC_M,   _COMGUI, _DOTALT, _SLSHCTL, ____,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     MO(_NAV), KC_DEL, _TD_ENTGUI,                _SPCNAV, KC_BSPC, MO(_SYMBOLS)
   //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -90,22 +116,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
       ____, TOGGLE_LIGHTS, ____, KC_MUTE, KC_VOLU,  ____,                            KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT,  ____,    ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, KC_VOLD,  ____,    ____,           _TD_NUMTERM, _PREV_TAB,_LINE_DOWN,_LINE_UP,_NEXT_TAB,   ____,   ____,
+      KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, KC_VOLD,  ____,    RESET,           ____,  _PREV_TAB,_LINE_DOWN,_LINE_UP,_NEXT_TAB,   ____,   ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                        ____,   ____,   ____,                         ____,   ____,    ____
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 	[_SYMBOLS] = LAYOUT(
    //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-       ____,    ____,    ____,    ____,    ____,   ____,                                ____,    ____,  KC_LBRC, KC_RBRC,    ____,   ____,
+       ____,    ____,    ____,    ____,    ____,   ____,                                ____,    ____,    ____,    ____,    ____,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
        ____,    ____,    ____,    ____,    ____,   ____,                                KC_LT,   KC_GT,  KC_LCBR, KC_RCBR, LSFT(KC_MINUS), ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____,    ____,    ____,   ____,                                KC_PLUS, KC_EQL, KC_LPRN, KC_RPRN,  KC_MINUS,   ____,
+      KC_LSFT, KC_LCTRL, KC_LALT, KC_LGUI, ____,   ____,                               KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_MINUS,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____,    ____,    ____,   ____,   ____,                ____,   ____,   KC_GRV,   KC_LT,   KC_GT,    ____,   ____,
+       ____,    ____,    ____,    ____,    ____,   ____,   ____,                ____,  KC_PLUS,  KC_EQL,   KC_LT,   KC_GT,  KC_BSLASH, ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                       ____,    ____,    ____,                      ____,    ____,    ____
+                                       ____,    ____,    ____,                      ____,    KC_TRNS,    ____
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
    ),
 	[_COMMAND] = LAYOUT(
@@ -118,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
        ____,    ____,    ____, TO(_COLEMAK), ____,    ____,    ____,           ____,HYPR(KC_N),HYPR(KC_M),HYPR(KC_COMMA),HYPR(KC_DOT),  ____,   ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                       ____,    ____,    ____,                      ____,  KC_TRNS,   ____
+                                     _______,  _______, _______,                  _______,  _______, _______
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
    ),
    	[_NUMBERS] = LAYOUT(
@@ -131,51 +157,71 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
        ____,    ____,    ____,    ____,    ____,    ____,     ____,           KC_TRNS,   ____,   KC_DOT,  ____,    ____,    ____,    ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                     KC_DEL,  KC_BSPC,  _TD_ENTGUI,                ____, KC_BSPC,   ____
+                                     _______,  _______, _______,                  _______,  _______, _______
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
    )
 };
 
 // Combo Stuff
 enum combo_events {
-  ZC_COPY,
-  XV_PASTE,
-  SPC_NUM
+  WE_ESC,
+  SD_TAB,
+  XC_COPY,
+  LCLN_QUOTE,
+  CV_PASTE
 };
 
-const uint16_t PROGMEM copy_combo[] = {_XALT, _CGUI, COMBO_END};
-const uint16_t PROGMEM paste_combo[] = {_CGUI, KC_V, COMBO_END};
-const uint16_t PROGMEM numlayer_combo[] = {22278, 16940, COMBO_END};
+const uint16_t PROGMEM copy_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM paste_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM tab_combo[] = {CTRL_S, ALT_D, COMBO_END};
+const uint16_t PROGMEM esc_combo[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM quote_combo[] = {CTRL_L, SFT_SCLN, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [ZC_COPY] = COMBO_ACTION(copy_combo),
-  [XV_PASTE] = COMBO_ACTION(paste_combo),
+  [XC_COPY] = COMBO_ACTION(copy_combo),
+  [CV_PASTE] = COMBO_ACTION(paste_combo),
+  [SD_TAB] = COMBO_ACTION(tab_combo),
+  [WE_ESC] = COMBO_ACTION(esc_combo),
+  [LCLN_QUOTE] = COMBO_ACTION(quote_combo),
 //   [SPC_NUM] = COMBO_ACTION(numlayer_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
   uprintf("Combo Event: index: %u (%d)\n", combo_index, pressed);
   switch(combo_index) {
-    case ZC_COPY:
+    case XC_COPY:
       if (pressed) {
         tap_code16(LGUI(KC_C));
       }
       break;
-    case XV_PASTE:
+    case CV_PASTE:
       if (pressed) {
         tap_code16(LGUI(KC_V));
       }
       break;
-    case SPC_NUM:
-
+    case SD_TAB:
       if (pressed) {
-        uprintf("num on");
-        layer_on(_NUMBERS);
-      }else{
-        uprintf("num off");
-        layer_off(_NUMBERS);
+        tap_code(KC_TAB);
       }
-    break;
+      break;
+    case WE_ESC:
+      if (pressed) {
+        if (keyboard_report->mods & MOD_BIT (KC_LSFT)) {
+            tap_code16(LSFT(KC_GRAVE));
+        }else if (keyboard_report->mods & MOD_BIT(KC_LGUI)) {
+            tap_code(KC_GRAVE);
+        }else{
+            tap_code(KC_ESC);
+        }
+
+      }
+      break;
+    case LCLN_QUOTE:
+      if (pressed) {
+        tap_code(KC_QUOT);
+      }
+      break;
+
   }
 }
 
@@ -434,6 +480,14 @@ uint16_t get_tapping_term(uint16_t keycode) {
         return 200;
     case TD_ENTGUI:
        return 190;
+    case SFT_SCLN:
+    case SFT_A:
+    case CTRL_S:
+    case CTRL_L:
+    case ALT_D:
+    case ALT_K:
+    case GUI_F:
+    case GUI_J:
     case _SLSHCTL:
     case _CGUI:
     case _XALT:
