@@ -48,6 +48,7 @@ enum my_keycodes {
 #define _WINMODE MAGIC_TOGGLE_CTL_GUI
 #define ____ KC_NO
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT(
@@ -89,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
       ____, TOGGLE_LIGHTS, ____, KC_MUTE, KC_VOLU,  ____,                            KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT,  ____,    ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, KC_VOLD,  ____,    ____,              ____, _PREV_TAB,_LINE_DOWN,_LINE_UP,_NEXT_TAB,   ____,   ____,
+      KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, KC_VOLD,  ____,    ____,           _TD_NUMTERM, _PREV_TAB,_LINE_DOWN,_LINE_UP,_NEXT_TAB,   ____,   ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                        ____,   ____,   ____,                         ____,   ____,    ____
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -128,9 +129,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
        ____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINUS,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____,    ____,    ____,    ____,     ____,           KC_TRNS,     ____,    ____,    ____,    ____,    ____,    ____,
+       ____,    ____,    ____,    ____,    ____,    ____,     ____,           KC_TRNS,   ____,   KC_DOT,  ____,    ____,    ____,    ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                     KC_DEL,  KC_BSPC,  _TD_ENTGUI,                KC_SPC, KC_BSPC,   ____
+                                     KC_DEL,  KC_BSPC,  _TD_ENTGUI,                ____, KC_BSPC,   ____
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
    )
 };
@@ -149,7 +150,7 @@ const uint16_t PROGMEM numlayer_combo[] = {22278, 16940, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
   [ZC_COPY] = COMBO_ACTION(copy_combo),
   [XV_PASTE] = COMBO_ACTION(paste_combo),
-  [SPC_NUM] = COMBO_ACTION(numlayer_combo),
+//   [SPC_NUM] = COMBO_ACTION(numlayer_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -341,8 +342,8 @@ void dance_quote_finished (qk_tap_dance_state_t *state, void *user_data) {
         register_code (KC_RSFT);
         register_code (KC_QUOT);
         break;
-    // case HOLD:
-        // layer_on(_NUMBERS);
+    case HOLD:
+        layer_on(_NUMBERS);
     }
 }
 
@@ -355,8 +356,8 @@ void dance_quote_reset (qk_tap_dance_state_t *state, void *user_data) {
         unregister_code (KC_RSFT);
         unregister_code (KC_QUOT);
         break;
-    // case HOLD:
-        // layer_off(_NUMBERS);
+    case HOLD:
+        layer_off(_NUMBERS);
     }
     dance_quote_state = -1;
 }
