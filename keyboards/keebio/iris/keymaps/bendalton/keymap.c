@@ -55,8 +55,6 @@ enum my_keycodes {
 #define _SFT_BSPC LSFT_T(KC_BSPC)
 #define _SFT_DEL LSFT_T(KC_DEL)
 
-
-
 #define ALT_K LALT_T(KC_K)
 #define ALT_S LALT_T(KC_S)
 #define ALT_D LALT_T(KC_D)
@@ -71,9 +69,9 @@ enum my_keycodes {
 #define SYS_Z LT(_SYS, KC_Z)
 #define VOL_DN S(LALT(KC__VOLDOWN))
 #define VOL_UP S(LALT(KC__VOLUP))
+#define CMD_Z LT(_COMMAND,KC_Z)
 
 #define ____ KC_NO
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -82,11 +80,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ____,  ____,    ____,    ____,    ____,    ____,                                 ____,    ____,    ____,    ____,    ____,    ____,
   //    KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _TD_DASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      ____,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ____,
+      ____,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
       ____,    SFT_A,   CTRL_S,  ALT_D,   GUI_F,   KC_G,                               KC_H,    GUI_J,   ALT_K,   CTRL_L, SFT_SCLN,  ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      ____,    KC_Z,   _XALT,   _CGUI,    KC_V,    KC_B,    ____,              ____,   KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, ____,
+      ____,    CMD_Z,   _XALT,   _CGUI,    KC_V,    KC_B,_TD_ENTGUI,         _SPCNAV,   KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, ____,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      _NUM,   _SFT_DEL,_TD_ENTGUI,                _SPCNAV, _SFT_BSPC, SYM_OS
   //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -99,14 +97,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
       ____,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                               KC_J,    KC_L,    KC_U,    KC_Y,    _TD_CLN, ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,   KC_A,    KC_R,    KC_S,   KC_T,    KC_D,                                KC_H,    KC_N,    KC_E,    KC_I,    KC_O,   ____,
+       ____,   KC_A,    KC_R,    KC_S,   KC_T,    KC_D,                                KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      ____,   _ZCTL,   _XALT,   _CGUI,    KC_V,     KC_B,   ____,                ____,   KC_K,    KC_M,   _COMGUI, _DOTALT, _SLSHCTL, ____,
+      ____,   _ZCTL,   _XALT,   _CGUI,    KC_V,     KC_B, _TD_ENTGUI,       _SPCNAV,   KC_K,    KC_M,   _COMGUI, _DOTALT, _SLSHCTL, ____,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    MO(_NAV), KC_DEL, _TD_ENTGUI,                _SPCNAV, KC_BSPC, MO(_SYMBOLS)
-  //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+                                     _NUM,   _SFT_DEL,_TD_ENTGUI,                _SPCNAV, _SFT_BSPC, SYM_OS
+   //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
     ),
-
 
     [_NAV] = LAYOUT(
    //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -114,14 +111,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
       RGB_MOD, DIMMER,  RGB_HUD, RGB_SPD, RGB_SAD,  ____,                              KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_WH_D,  ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      ____, TOGGLE_LIGHTS, ____, KC_MUTE, KC_VOLU,  ____,                            KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT,  ____,    ____,
+      ____, TOGGLE_LIGHTS, ____, KC_MUTE, KC_VOLU,  ____,                              KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT,  ____,    ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, KC_VOLD,  ____,    RESET,           ____,  _PREV_TAB,_LINE_DOWN,_LINE_UP,_NEXT_TAB,   ____,   ____,
+      KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, KC_VOLD,  ____,   _______,          _______, _PREV_TAB,_LINE_DOWN,_LINE_UP,_NEXT_TAB,   ____,   ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                       _______,  _______, _______,                  _______,  _______, _______
+                                     _______,  _______, _______,                  _______,  _______, _______
   //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
-	[_SYMBOLS] = LAYOUT(
+    [_SYMBOLS] = LAYOUT(
    //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
        ____,    ____,    ____,    ____,    ____,   ____,                                ____,    ____,    ____,    ____,    ____,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -129,25 +126,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
       KC_LSFT, KC_LCTRL, KC_LALT, KC_LGUI, ____,   ____,                               KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_MINUS,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____,    ____,    ____,   ____,   ____,                ____,  KC_PLUS,  KC_EQL,   KC_LT,   KC_GT,  KC_BSLASH, ____,
+       ____,    ____,    ____,    ____,    ____,   ____,   _______,          _______,  KC_PLUS,  KC_EQL,   KC_LT,   KC_GT,  KC_BSLASH, ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                       _______,  _______, _______,                  _______,  _______, _______
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
    ),
-	[_COMMAND] = LAYOUT(
+    [_COMMAND] = LAYOUT(
    //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-       ____,    ____,    ____,    ____,    ____,    ____,                          HYPR(KC_6),HYPR(KC_7),HYPR(KC_8),HYPR(KC_9),   ____,   ____,
+       ____,    ____,    ____,    ____,    ____,    ____,                             HYPR(KC_6),HYPR(KC_7),HYPR(KC_8),HYPR(KC_9),   ____,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       ____, TO(_QWERTY),_WINMODE, ____,   RESET,   ____,                          HYPR(KC_Y),HYPR(KC_U),HYPR(KC_I),HYPR(KC_O),   ____,   ____,
+       ____,   RESET, _WINMODE, ____, TO(_COLEMAK),TO(_QWERTY),                       HYPR(KC_Y),HYPR(KC_U),HYPR(KC_I),HYPR(KC_O),   ____,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_TRNS,  ____,    ____,   DEBUG,    ____,    ____,                         HYPR(KC_H),HYPR(KC_J),HYPR(KC_K),HYPR(KC_L),   ____,   ____,
+       ____,    ____,    ____,   DEBUG,    ____,    ____,                              HYPR(KC_H),HYPR(KC_J),HYPR(KC_K),HYPR(KC_L),   ____,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____, TO(_COLEMAK), ____,    ____,    ____,           ____,HYPR(KC_N),HYPR(KC_M),HYPR(KC_COMMA),HYPR(KC_DOT),  ____,   ____,
+       ____,    ____,    ____,     ____,    ____,    ____,   _______,         _______,HYPR(KC_N),HYPR(KC_M),HYPR(KC_COMMA),HYPR(KC_DOT),  ____,   ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      _______,  _______, _______,                  _______,  _______, _______
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
    ),
-   	[_NUMBERS] = LAYOUT(
+    [_NUMBERS] = LAYOUT(
    //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_F6,                               KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -155,12 +152,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
        ____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINUS,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____,    ____,    ____,    ____,     ____,           KC_TRNS,   ____,   KC_DOT,  ____,    ____,    ____,    ____,
+       ____,    ____,    ____,    ____,    ____,    ____,    _______,         _______,   ____,   KC_DOT,  ____,    ____,    ____,    ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      _______,  _______, _______,                  _______,  _______, _______
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
    )
 };
+
+bool is_mac(void){
+    keymap_config.raw = eeconfig_read_keymap();
+    return !keymap_config.swap_lctl_lgui;
+}
 
 // Combo Stuff
 enum combo_events {
@@ -201,7 +203,16 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       break;
     case SD_TAB:
       if (pressed) {
+        if (keyboard_report->mods & MOD_BIT (KC_LCTL) && !is_mac()) {
+            unregister_mods(MOD_BIT (KC_LCTL));
+            register_mods(MOD_BIT (KC_LALT));
+        }
         tap_code(KC_TAB);
+      }else{
+        if (keyboard_report->mods & MOD_BIT (KC_LALT) && !is_mac()) {
+            unregister_mods(MOD_BIT (KC_LALT));
+            register_mods(MOD_BIT (KC_LCTL));
+        }
       }
       break;
     case WE_ESC:
@@ -213,7 +224,6 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
         }else{
             tap_code(KC_ESC);
         }
-
       }
       break;
     case LCLN_QUOTE:
@@ -259,7 +269,6 @@ int cur_dance (qk_tap_dance_state_t *state) {
    return -1;
 }
 
-
 // TODO add triple tap to undo a copy - e.g., open clipboard history, hit down twice and enter
 static int dance_entgui_state = -1;
 void dance_entgui_fin (qk_tap_dance_state_t *state, void *user_data) {
@@ -269,11 +278,20 @@ void dance_entgui_fin (qk_tap_dance_state_t *state, void *user_data) {
         register_code(KC_ENT);
         break;
     case DOUBLE_TAP:
-        register_mods(MOD_BIT(KC_LGUI));
+        if(is_mac()){
+            register_mods(MOD_BIT(KC_LGUI));
+        }else{
+            register_mods(MOD_BIT(KC_LCTL));
+        }
         register_code(KC_ENT);
         break;
     case HOLD:
-        register_mods(MOD_BIT(KC_LGUI));
+        if(is_mac()){
+            register_mods(MOD_BIT(KC_LGUI));
+        }else{
+            register_mods(MOD_BIT(KC_LCTL));
+        }
+
     }
 }
 
@@ -284,10 +302,18 @@ void dance_entgui_reset (qk_tap_dance_state_t *state, void *user_data) {
         break;
     case DOUBLE_TAP:
         unregister_code(KC_ENT);
-        unregister_mods(MOD_BIT(KC_LGUI));
+         if(is_mac()){
+            unregister_mods(MOD_BIT(KC_LGUI));
+        }else{
+            unregister_mods(MOD_BIT(KC_LCTL));
+        }
         break;
     case HOLD:
-        unregister_mods(MOD_BIT(KC_LGUI));
+        if(is_mac()){
+            unregister_mods(MOD_BIT(KC_LGUI));
+        }else{
+            unregister_mods(MOD_BIT(KC_LCTL));
+        }
     }
     dance_entgui_state = -1;
 }
@@ -561,7 +587,7 @@ uint32_t layer_state_set_user(uint32_t state) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  uprintf("process user record %u (pressed? %d)\n", keycode, record->event.pressed);
+//   uprintf("process user record %u (pressed? %d)\n", keycode, record->event.pressed);
   switch (keycode) {
     case TOGGLE_LIGHTS:
     if (!record->event.pressed) {
@@ -583,18 +609,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-
-
-
-
-// notes and unused code
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//   // If console is enabled, it will print the matrix position and status of each key pressed
-// #ifdef CONSOLE_ENABLE
-//     uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
-// #endif
-//   return true;
-// }
-
-// Future tap dance excellence
-// https://pastebin.com/V8jcmNGr
