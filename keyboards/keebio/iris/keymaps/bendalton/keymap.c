@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-
 extern keymap_config_t keymap_config;
 
 // tap dance layers
@@ -50,26 +49,22 @@ enum my_keycodes {
 #define _TD_CP TD(TD_CP)
 #define _TD_DASH TD(TD_DASH)
 #define _TD_QUOTE TD(TD_QUOTE)
+#define _SFT_BSPC LSFT_T(KC_BSPC)
 #define _TD_NUMTERM TD(TD_NUMTERM)
 #define _WINMODE MAGIC_TOGGLE_CTL_GUI
-#define _SFT_BSPC LSFT_T(KC_BSPC)
 #define _SFT_DEL LSFT_T(KC_DEL)
 
-#define ALT_K LALT_T(KC_K)
-#define ALT_S LALT_T(KC_S)
+#define ALT_C LALT_T(KC_C)
+#define ALT_COMM LALT_T(KC_COMM)
 #define ALT_D LALT_T(KC_D)
-#define CTRL_L LCTL_T(KC_L)
-#define CTRL_S LCTL_T(KC_S)
-#define GUI_F LGUI_T(KC_F)
-#define GUI_J LGUI_T(KC_J)
-#define SFT_A LSFT_T(KC_A)
-#define SFT_O LSFT_T(KC_O)
-#define SFT_SCLN LSFT_T(KC_SCLN)
-#define SYM_OS OSL(_SYMBOLS)
-#define SYS_Z LT(_SYS, KC_Z)
+#define CTRL_X LCTL_T(KC_X)
+#define CTRL_DOT LCTL_T(KC_DOT)
+#define GUI_V LGUI_T(KC_V)
+#define GUI_M LGUI_T(KC_M)
 #define VOL_DN S(LALT(KC__VOLDOWN))
 #define VOL_UP S(LALT(KC__VOLUP))
 #define CMD_Z LT(_COMMAND,KC_Z)
+#define SYM_OS OSL(_SYMBOLS)
 
 #define ____ KC_NO
 
@@ -80,11 +75,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ____,  ____,    ____,    ____,    ____,    ____,                                 ____,    ____,    ____,    ____,    ____,    ____,
   //    KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _TD_DASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      ____,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ____,
+      ____,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      ____,    SFT_A,   CTRL_S,  ALT_D,   GUI_F,   KC_G,                               KC_H,    GUI_J,   ALT_K,   CTRL_L, SFT_SCLN,  ____,
+      ____,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN,  ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      ____,    CMD_Z,   _XALT,   _CGUI,    KC_V,    KC_B,_TD_ENTGUI,         _SPCNAV,   KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, ____,
+      ____,    CMD_Z,   CTRL_X,   ALT_C,   GUI_V,  KC_B, _TD_ENTGUI,         _SPCNAV,   KC_N,   GUI_M,  ALT_COMM, CTRL_DOT, KC_SLSH, ____,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      _NUM,   _SFT_DEL,_TD_ENTGUI,                _SPCNAV, _SFT_BSPC, SYM_OS
   //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -99,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
        ____,   KC_A,    KC_R,    KC_S,   KC_T,    KC_D,                                KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    ____,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      ____,   _ZCTL,   _XALT,   _CGUI,    KC_V,     KC_B, _TD_ENTGUI,       _SPCNAV,   KC_K,    KC_M,   _COMGUI, _DOTALT, _SLSHCTL, ____,
+      ____,    CMD_Z,   CTRL_X,   ALT_C,   GUI_V,  KC_B, _TD_ENTGUI,       _SPCNAV,   KC_K,    GUI_M,  ALT_COMM, CTRL_DOT, KC_SLSH, ____,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      _NUM,   _SFT_DEL,_TD_ENTGUI,                _SPCNAV, _SFT_BSPC, SYM_OS
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -122,11 +117,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
        ____,    ____,    ____,    ____,    ____,   ____,                                ____,    ____,    ____,    ____,    ____,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____,    ____,    ____,   ____,                                KC_LT,   KC_GT,  KC_LCBR, KC_RCBR, LSFT(KC_MINUS), ____,
+       ____,    ____,    ____,    ____,    ____,   ____,                       LSFT(KC_BSLASH),  KC_GRV,  KC_LCBR, KC_RCBR, LSFT(KC_MINUS), ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_LSFT, KC_LCTRL, KC_LALT, KC_LGUI, ____,   ____,                               KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_MINUS,   ____,
+       ____,    ____,    ____,    ____,    ____,   ____,                               KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_MINUS,   ____,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____,    ____,    ____,   ____,   _______,          _______,  KC_PLUS,  KC_EQL,   KC_LT,   KC_GT,  KC_BSLASH, ____,
+       ____,  KC_LCTRL, KC_LALT, KC_LGUI,  ____,   ____,   _______,          _______,  KC_PLUS,  KC_EQL,  KC_LT,   KC_GT,  KC_BSLASH, ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                       _______,  _______, _______,                  _______,  _______, _______
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -152,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
        ____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINUS,
    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       ____,    ____,    ____,    ____,    ____,    ____,    _______,         _______,   ____,   KC_DOT,  ____,    ____,    ____,    ____,
+       ____,    ____,    ____,    ____,    ____,    ____,    _______,         _______, KC_PLUS, KC_EQL,  KC_COMM,  KC_DOT,  KC_SLSH,  ____,
    //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      _______,  _______, _______,                  _______,  _______, _______
    //                               └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -168,24 +163,32 @@ bool is_mac(void){
 enum combo_events {
   WE_ESC,
   SD_TAB,
-  XC_COPY,
   LCLN_QUOTE,
-  CV_PASTE
+  XC_COPY,
+  CV_PASTE,
+  WF_ESC,
+  RS_TAB,
+  IO_QUOTE,
 };
 
 const uint16_t PROGMEM copy_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM paste_combo[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM tab_combo[] = {CTRL_S, ALT_D, COMBO_END};
-const uint16_t PROGMEM esc_combo[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM quote_combo[] = {CTRL_L, SFT_SCLN, COMBO_END};
+const uint16_t PROGMEM tabQ_combo[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM escQ_combo[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM quoteQ_combo[] = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM tabC_combo[] = {KC_R, KC_S, COMBO_END};
+const uint16_t PROGMEM escC_combo[] = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM quoteC_combo[] = {KC_I, KC_O, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [XC_COPY] = COMBO_ACTION(copy_combo),
   [CV_PASTE] = COMBO_ACTION(paste_combo),
-  [SD_TAB] = COMBO_ACTION(tab_combo),
-  [WE_ESC] = COMBO_ACTION(esc_combo),
-  [LCLN_QUOTE] = COMBO_ACTION(quote_combo),
-//   [SPC_NUM] = COMBO_ACTION(numlayer_combo),
+  [SD_TAB] = COMBO_ACTION(tabQ_combo),
+  [WE_ESC] = COMBO_ACTION(escQ_combo),
+  [LCLN_QUOTE] = COMBO_ACTION(quoteQ_combo),
+  [RS_TAB] = COMBO_ACTION(tabC_combo),
+  [WF_ESC] = COMBO_ACTION(escC_combo),
+  [IO_QUOTE] = COMBO_ACTION(quoteC_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -202,6 +205,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       }
       break;
     case SD_TAB:
+    case RS_TAB:
       if (pressed) {
         if (keyboard_report->mods & MOD_BIT (KC_LCTL) && !is_mac()) {
             unregister_mods(MOD_BIT (KC_LCTL));
@@ -216,6 +220,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       }
       break;
     case WE_ESC:
+    case WF_ESC:
       if (pressed) {
         if (keyboard_report->mods & MOD_BIT (KC_LSFT)) {
             tap_code16(LSFT(KC_GRAVE));
@@ -227,11 +232,11 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       }
       break;
     case LCLN_QUOTE:
+    case IO_QUOTE:
       if (pressed) {
         tap_code(KC_QUOT);
       }
       break;
-
   }
 }
 
@@ -506,20 +511,12 @@ uint16_t get_tapping_term(uint16_t keycode) {
         return 200;
     case TD_ENTGUI:
        return 190;
-    case SFT_SCLN:
-    case SFT_A:
-    case CTRL_S:
-    case CTRL_L:
-    case ALT_D:
-    case ALT_K:
-    case GUI_F:
-    case GUI_J:
-    case _SLSHCTL:
-    case _CGUI:
-    case _XALT:
-    case _ZCTL:
-    case _COMGUI:
-    case _DOTALT:
+    case CTRL_X:
+    case CTRL_DOT:
+    case ALT_COMM:
+    case ALT_C:
+    case GUI_M:
+    case GUI_V:
       return 200;
     default:
       return TAPPING_TERM;
@@ -587,7 +584,7 @@ uint32_t layer_state_set_user(uint32_t state) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//   uprintf("process user record %u (pressed? %d)\n", keycode, record->event.pressed);
+  uprintf("process user record %u (pressed? %d)\n", keycode, record->event.pressed);
   switch (keycode) {
     case TOGGLE_LIGHTS:
     if (!record->event.pressed) {
