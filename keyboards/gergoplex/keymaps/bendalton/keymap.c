@@ -132,6 +132,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_C) {
+      // Anything you can do in a macro.
+      register_code(KC_LGUI);
+      register_code(KC_LALT);
+      register_code(KC_C);
+      unregister_code(KC_C);
+      unregister_code(KC_LALT);
+      unregister_code(KC_LGUI);
+    }
+
+    SEQ_ONE_KEY(KC_I) {
+      // Anything you can do in a macro.
+      register_code(KC_LGUI);
+      register_code(KC_LALT);
+      register_code(KC_J);
+      unregister_code(KC_J);
+      unregister_code(KC_LALT);
+      unregister_code(KC_LGUI);
+    }
+    // SEQ_TWO_KEYS(KC_F, KC_Q) {
+    //   tap_code(KC_F1);
+    // }
+  }
+}
+
 bool is_mac(void){
     keymap_config.raw = eeconfig_read_keymap();
     return !keymap_config.swap_lctl_lgui;
@@ -147,6 +179,7 @@ enum combo_events {
   WF_ESC,
   RS_TAB,
   IO_QUOTE,
+  YU_LEADER
 };
 
 const uint16_t PROGMEM copy_combo[] = {KC_X, KC_C, COMBO_END};
@@ -157,6 +190,7 @@ const uint16_t PROGMEM quoteQ_combo[] = {KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM tabC_combo[] = {KC_R, KC_S, COMBO_END};
 const uint16_t PROGMEM escC_combo[] = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM quoteC_combo[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM leaderYU_combo[] = {KC_Y, KC_U, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [XC_COPY] = COMBO_ACTION(copy_combo),
@@ -167,6 +201,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [RS_TAB] = COMBO_ACTION(tabC_combo),
   [WF_ESC] = COMBO_ACTION(escC_combo),
   [IO_QUOTE] = COMBO_ACTION(quoteC_combo),
+  [YU_LEADER] = COMBO_ACTION(leaderYU_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -213,6 +248,11 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     case IO_QUOTE:
       if (pressed) {
         tap_code(KC_QUOT);
+      }
+      break;
+    case YU_LEADER:
+      if (pressed) {
+        qk_leader_start();
       }
       break;
   }
