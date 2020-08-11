@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_KNIGHT
 #define RGBLIGHT_EFFECT_STATIC_GRADIENT
 #define COMBO_COUNT 8
-#define COMBO_TERM 60
+#define COMBO_TERM 30
 #define COMBO_ALLOW_ACTION_KEYS
 #define IGNORE_MOD_TAP_INTERRUPT
 #define FORCE_NKRO
