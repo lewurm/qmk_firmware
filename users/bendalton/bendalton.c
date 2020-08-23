@@ -2,10 +2,12 @@
 
 extern keymap_config_t keymap_config;
 
+
 bool is_mac(void){
     keymap_config.raw = eeconfig_read_keymap();
     return !keymap_config.swap_lctl_lgui;
 }
+
 const uint16_t PROGMEM copy_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM paste_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM tabQ_combo[] = {KC_S, KC_D, COMBO_END};
@@ -262,15 +264,14 @@ void dance_numterm_reset (qk_tap_dance_state_t *state, void *user_data) {
 
 qk_tap_dance_action_t tap_dance_actions[] = {
  [TD_CLN] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset), // semicolon and colon on tap/dbltap
- [TD_CP] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_copypaste_fin, dance_copypaste_reset), // copy/paste/undo-copy/clipboard history
  [TD_DASH] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_dash_fin, dance_dash_reset), // - or _ for tap/dbl
  [TD_QUOTE] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_quote_finished, dance_quote_reset), // ' or '' for tap/dbl
  [TD_NUMTERM] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_numterm_fin, dance_numterm_reset),
  [TD_ENTGUI] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_entgui_fin, dance_entgui_reset)
 };
-// Custom tapping terms
 
-// #define TAPPING_TERM 150
+// // Custom tapping terms
+
 uint16_t get_tapping_term(uint16_t keycode) {
 
   switch (keycode) {
@@ -294,8 +295,8 @@ uint16_t get_tapping_term(uint16_t keycode) {
 }
 
 
-void persistent_default_layer_set(uint16_t default_layer) {
-  eeconfig_update_default_layer(default_layer);
-  default_layer_set(default_layer);
-}
+// void persistent_default_layer_set(uint16_t default_layer) {
+//   eeconfig_update_default_layer(default_layer);
+//   default_layer_set(default_layer);
+// }
 

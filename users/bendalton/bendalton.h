@@ -1,6 +1,8 @@
 /*
 Copyright 2020 Ben Dalton
 
+
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -16,7 +18,16 @@ along with this program. If not, see <http://www.gnu/org/licenses/>.
 */
 
 #pragma once
-#include QMK_KEYBOARD_H
+#include "quantum.h"
+// KEYCODES ============================================================================
+
+enum bendalton_keycodes {
+  TOGGLE_LIGHTS = SAFE_RANGE,
+  BRIGHTER,
+  DIMMER,
+  BACKLIT,
+  RGBRST
+};
 
 enum shared_layers {
   _QWERTY,
@@ -28,16 +39,6 @@ enum shared_layers {
   _ADJUST
 };
 
-// KEYCODES ============================================================================
-
-enum bendalton_keycodes {
-  TOGGLE_LIGHTS = SAFE_RANGE,
-  BRIGHTER,
-  DIMMER,
-  BACKLIT,
-  RGBRST
-};
-
 #define _QWERTY 0
 #define _COLEMAK 1
 #define _NAV 2
@@ -45,6 +46,8 @@ enum bendalton_keycodes {
 #define _COMMAND 4
 #define _NUMBERS 5
 #define _ADJUST 6
+
+
 
 #define _CODE MO(_COMMAND)
 #define _SYM MO(_SYMBOLS)
@@ -107,12 +110,12 @@ enum combo_events {
 
 // tap dance layers
 enum {
- TD_CLN = 0, // ; or : or tap/dbl
- TD_CP = 3, // copy/paste/get last clipboard item/clipboard manager for tap/dbl/trpl/hold
- TD_DASH = 4, // - or _ for tap/dbl
- TD_QUOTE = 5, // ' or '' for tap/dbl
- TD_NUMTERM = 6, // hold for num layer, dbl tap toggle num layer, or tap for term
- TD_ENTGUI = 7,
+ TD_CLN, // ; or : or tap/dbl
+ TD_CP, // copy/paste/get last clipboard item/clipboard manager for tap/dbl/trpl/hold
+ TD_DASH, // - or _ for tap/dbl
+ TD_QUOTE, // ' or '' for tap/dbl
+ TD_NUMTERM, // hold for num layer, dbl tap toggle num layer, or tap for term
+ TD_ENTGUI,
 };
 
 
@@ -123,11 +126,16 @@ enum {
 
 #define LAYOUT_wrapper(...)             LAYOUT(__VA_ARGS__)
 
+/* DEBUG Layer ===========================================================================*/
+
+#define __DEBUG_12__ KC_A, KC_A,KC_A,KC_A,KC_A,KC_A,KC_A,KC_A,KC_A,KC_A,KC_A,KC_A
+#define __DEBUG_6__ KC_A,KC_A,KC_A,KC_A,KC_A,KC_A
+
 /* THUMBS ============================================================================== */
 
 #define ____THUMBS_L4____    _NUM,    _SFT_DEL,  _TD_ENTGUI
 #define ____THUMBS_R4____    _SPCNAV, _SFT_BSPC, SYM_OS
-
+#define ____THUMBS_TRNS____  KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS
 
 
 /* QWERTY ============================================================================== */
@@ -155,7 +163,7 @@ enum {
 // RIGHT
 // - CORE
 #define ____COLEMAK_R1____    KC_J,   KC_L,  KC_U,     KC_Y,     _TD_CLN
-#define ____COLEMAK_R2____    KC_H,   KC_N,  KC_KE     KC_I,     KC_O
+#define ____COLEMAK_R2____    KC_H,   KC_N,  KC_E,     KC_I,     KC_O
 #define ____COLEMAK_R3____    NUM_K,  GUI_M, ALT_COMM, CTRL_DOT, KC_SLSH
 
 /* NUMBERS ============================================================================== */
@@ -190,15 +198,15 @@ enum {
 
 // LEFT
 // - CORE
-#define ____SYBMOLS_L1____    ____,    ____,    ____,    ____,   ____
-#define ____SYBMOLS_L2____    ____,    ____,    ____,    ____,   ____
-#define ____SYBMOLS_L3____    KC_LCTRL, KC_LALT, KC_LGUI,  ____,   ____
+#define ____SYMBOLS_L1____    ____,    ____,    ____,    ____,   ____
+#define ____SYMBOLS_L2____    ____,    ____,    ____,    ____,   ____
+#define ____SYMBOLS_L3____    KC_LCTRL, KC_LALT, KC_LGUI,  ____,   ____
 
 // RIGHT
 // - CORE
-#define ____SYBMOLS_R1____    LSFT(KC_BSLASH),  KC_GRV,  KC_LCBR, KC_RCBR, LSFT(KC_MINUS)
-#define ____SYBMOLS_R2____    KC_LBRC,          KC_RBRC, KC_LPRN, KC_RPRN, KC_MINUS
-#define ____SYBMOLS_R3____    KC_PLUS,          KC_EQL,  KC_LT,   KC_GT,   KC_BSLASH
+#define ____SYMBOLS_R1____    LSFT(KC_BSLASH),  KC_GRV,  KC_LCBR, KC_RCBR, LSFT(KC_MINUS)
+#define ____SYMBOLS_R2____    KC_LBRC,          KC_RBRC, KC_LPRN, KC_RPRN, KC_MINUS
+#define ____SYMBOLS_R3____    KC_PLUS,          KC_EQL,  KC_LT,   KC_GT,   KC_BSLASH
 
 /* COMMAND ============================================================================== */
 

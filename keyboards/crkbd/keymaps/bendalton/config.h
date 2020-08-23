@@ -28,17 +28,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_RIGHT
 // #define EE_HANDS
 
-#define SSD1306OLED
+// #define SSD1306OLED
 
 #define USE_SERIAL_PD2
 #define RGBLIGHT_LAYERS
-#define COMBO_COUNT 16
-#define COMBO_ALLOW_ACTION_KEYS
-#define COMBO_TERM 40
-#define TAPPING_TERM 250
-#define TAPPING_TERM_PER_KEY
-#define PERMISSIVE_HOLD
-#define IGNORE_MOD_TAP_INTERRUPT
+
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
     #define RGBLIGHT_ANIMATIONS
