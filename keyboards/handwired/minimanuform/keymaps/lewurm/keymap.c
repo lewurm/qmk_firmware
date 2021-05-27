@@ -37,6 +37,9 @@ enum {
 #define _TD_NUMTERM TD(TD_NUMTERM)
 #define _WINMODE MAGIC_TOGGLE_CTL_GUI
 #define ____ KC_NO
+#define zzzz KC_TRNS
+// bitwarden
+#define PWD LGUI(LSFT(KC_L))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -56,29 +59,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
    	[_NUMBERS] = LAYOUT_5x6(
     //┌────────┬────────┬────────┬────────┬────────┬────────┐           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-        KC_TILD, KC_EXLM,  KC_AT, KC_HASH,  KC_DLR,  KC_PERC,             KC_CIRC,  KC_7,    KC_8,   KC_9,   KC_ASTR, KC_EQL,
+        KC_TILD, KC_EXLM,  KC_AT, KC_HASH,  KC_DLR,  KC_PERC,             KC_CIRC,  KC_7,    KC_8,    KC_9,   KC_ASTR, KC_EQL,
     //├────────┼────────┼────────┼────────┼────────┼────────┤           ├────────┼────────┼────────┼────────┼────────┼────────┤
-        KC_LCBR, KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR,             KC_PLUS,  KC_4,    KC_5,   KC_6,   KC_0, KC_MEDIA_PLAY_PAUSE,
+        KC_LCBR, KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR,             KC_PLUS,  KC_4,    KC_5,    KC_6,    KC_0,  KC_MEDIA_PLAY_PAUSE,
     //├────────┼────────┼────────┼────────┼────────┼────────┼           ┌────────┼────────┼────────┼────────┼────────┼────────┤
-        KC_TRNS, KC_TRNS, KC_EQL,  KC_LEFT, KC_RIGHT, KC_TRNS,           KC_MINUS,  KC_1,    KC_2,   KC_3,   KC_MUTE,  KC_TRNS,
+         zzzz,    zzzz,   KC_EQL,  KC_LEFT, KC_RIGHT, KC_GRV,            KC_MINUS,  KC_1,    KC_2,    KC_3,   KC_MUTE,  zzzz,
     //└────────┴────────┼────────┼────────┼────────┼────────┤           ├────────┼────────┼────────┼────────┼────────┴────────┘
-                         KC_LEFT, KC_TRNS, KC_BSPC, KC_SPC,              MO(_MISC), KC_TRNS, KC_VOLD, KC_VOLU,
+                           zzzz,    zzzz,    zzzz,    zzzz,              MO(_MISC), zzzz,   KC_VOLD, KC_VOLU,
     //                  └────────┴────────┴────────┼────────┤           ├────────┼────────┴────────┴────────┘
-                                                     KC_LGUI,             KC_TRNS
+                                                      zzzz,                zzzz
     //                                             └────────┘           └────────┘
     ),
 
    	[_MISC] = LAYOUT_5x6(
     //┌────────┬────────┬────────┬────────┬────────┬────────┐           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-        KC_TILD, KC_EXLM,  KC_AT, KC_HASH,  RESET,  KC_PERC,             KC_CIRC,  KC_7,    KC_8,   KC_9,   KC_ASTR, KC_EQL,
+         zzzz,    zzzz,    zzzz,    zzzz,    RESET,   zzzz,                zzzz,    zzzz,    zzzz,    zzzz,    zzzz,    zzzz,
     //├────────┼────────┼────────┼────────┼────────┼────────┤           ├────────┼────────┼────────┼────────┼────────┼────────┤
-        KC_LCBR, KC_DEL, KC_HOME, KC_PGDOWN, KC_PGUP, KC_END,             KC_PLUS,  KC_4,    KC_5,   KC_6,   KC_0, KC_MEDIA_PLAY_PAUSE,
+         zzzz,   KC_DEL, KC_HOME,KC_PGDOWN, KC_PGUP, KC_END,               zzzz,    zzzz,    zzzz,     PWD,    zzzz,    zzzz,
     //├────────┼────────┼────────┼────────┼────────┼────────┼           ┌────────┼────────┼────────┼────────┼────────┼────────┤
-        KC_TRNS, KC_TRNS, KC_EQL,  KC_LEFT, KC_RIGHT, KC_TRNS,           KC_MINUS,  KC_1,    KC_2,   KC_3,   KC_MUTE,  KC_TRNS,
+         zzzz,    zzzz,    zzzz,    zzzz,    zzzz,    zzzz,                zzzz,    zzzz,    zzzz,    zzzz,    zzzz,    zzzz,
     //└────────┴────────┼────────┼────────┼────────┼────────┤           ├────────┼────────┼────────┼────────┼────────┴────────┘
-                         KC_LEFT, KC_LALT, KC_BSPC, KC_SPC,              KC_TRNS,  KC_LCTL, KC_VOLD, KC_VOLU,
+                           zzzz,    zzzz,    zzzz,    zzzz,                zzzz,    zzzz,    zzzz,    zzzz,
     //                  └────────┴────────┴────────┼────────┤           ├────────┼────────┴────────┴────────┘
-                                                     KC_LGUI,             KC_TRNS
+                                                      zzzz,             zzzz
     //                                             └────────┘           └────────┘
     )
 
