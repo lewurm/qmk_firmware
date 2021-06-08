@@ -25,7 +25,7 @@
 /* key matrix pins */
 #define MATRIX_ROW_PINS { D0, D4, C6, D7, E6 }
 
-#define MATRIX_COL_PINS { B1, B3, B2, B6, B5, B4 }
+#define MATRIX_COL_PINS { B7, C1, B2, B6, B5, B4 }
 #define UNUSED_PINS
 
 /* COL2ROW or ROW2COL */
@@ -35,6 +35,11 @@
 // #define DEBOUNCING_DELAY 5
 
 #define RETRO_TAPPING
+
+#define ENCODERS_PAD_A { B1 }
+#define ENCODERS_PAD_B { B3 }
+
+#define ENCODER_RESOLUTION 2
 
 /* serial.c configuration for split keyboard */
 #define SOFT_SERIAL_PIN D1
