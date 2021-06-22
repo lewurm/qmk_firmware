@@ -29,7 +29,11 @@
 #define UNUSED_PINS
 
 /* COL2ROW or ROW2COL */
+#if 0
 #define DIODE_DIRECTION COL2ROW
+#else
+#define DIODE_DIRECTION ROW2COL
+#endif
 
 /* Set 0 if debouncing isn't needed */
 // #define DEBOUNCING_DELAY 5
@@ -41,15 +45,17 @@
 
 #define ENCODER_RESOLUTION 2
 
+#if 0
 /* serial.c configuration for split keyboard */
 #define SOFT_SERIAL_PIN D1
 #define USE_SERIAL
+#endif
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
+// #define LOCKING_SUPPORT_ENABLE
 
 /* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+// #define LOCKING_RESYNC_ENABLE
 
 #define COMBO_COUNT 16
 // #define COMBO_ALLOW_ACTION_KEYS
@@ -57,7 +63,8 @@
 
 #define RGB_DI_PIN B6
 #define RGBLED_NUM 2
-
 // #define RGBLED_SPLIT
+
+#define RGBLIGHT_LAYERS
 
 #endif
