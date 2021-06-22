@@ -67,4 +67,6 @@
 
 #define RGBLIGHT_LAYERS
 
+#define RGBLIGHT_HUE_STEP 25
+
 #endif
