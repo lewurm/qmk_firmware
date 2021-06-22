@@ -49,11 +49,12 @@ EXTRAKEY_ENABLE ?= yes	# Audio control and System control(+450)
 NKRO_ENABLE ?= yes		# USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 BACKLIGHT_ENABLE ?= no  # Enable keyboard backlight functionality
 CONSOLE_ENABLE = yes
-SPLIT_KEYBOARD = yes
+SPLIT_KEYBOARD = no # for now; yes
+RGBLIGHT_ENABLE = yes
 # BOOTLOADER = qmk-dfu
 # BOOTLOADER = caterina
 BOOTLOADER = atmel-dfu
-TAP_DANCE_ENABLE = yes
-COMBO_ENABLE = yes
+TAP_DANCE_ENABLE = no
+COMBO_ENABLE = no
 
-ENCODER_ENABLE = yes
+ENCODER_ENABLE = no # for now; yes
