@@ -70,18 +70,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
-// Light LEDs 6 to 9 and 12 to 15 red when caps lock is active. Hard to ignore!
-const rgblight_segment_t PROGMEM my_led_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_GREEN},
-    {1, 1, HSV_BLUE}
-);
-
-// Now define the array of layers. Later layers take precedence
-const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    my_led_layer
-);
-
-
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
   //debug_mouse=true;
@@ -89,9 +77,9 @@ void keyboard_post_init_user(void) {
   debug_matrix=true;
   debug_keyboard=true;
   print("post init");
-  // Enable the LED layers
-  rgblight_layers = my_rgb_layers;
-  print("enable LED layer");
+  setrgb(0xff, 0, 0, &led[0]);
+  setrgb(0, 0, 0xff, &led[1]);
+  rgblight_set();
 }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
