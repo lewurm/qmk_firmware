@@ -40,6 +40,8 @@ enum {
 #define zzzz KC_TRNS
 // bitwarden
 #define PWD LGUI(LSFT(KC_L))
+// right alt gr, for wincompose
+#define WCOMP KC_RALT
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -77,11 +79,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┤           ├────────┼────────┼────────┼────────┼────────┼────────┤
          zzzz,   KC_DEL, KC_HOME,KC_PGDOWN, KC_PGUP, KC_END,               zzzz,    zzzz,    zzzz,     PWD,    zzzz,    zzzz,
     //├────────┼────────┼────────┼────────┼────────┼────────┼           ┌────────┼────────┼────────┼────────┼────────┼────────┤
-         zzzz,    zzzz,    zzzz,    zzzz,    zzzz,    zzzz,                zzzz,    zzzz,    zzzz,    zzzz,    zzzz,    zzzz,
+         zzzz,    zzzz,    zzzz,    WCOMP,   zzzz,    zzzz,                zzzz,    zzzz,    zzzz,    zzzz,    zzzz,    zzzz,
     //└────────┴────────┼────────┼────────┼────────┼────────┤           ├────────┼────────┼────────┼────────┼────────┴────────┘
                            zzzz,    zzzz,    zzzz,    zzzz,                zzzz,    zzzz,    zzzz,    zzzz,
     //                  └────────┴────────┴────────┼────────┤           ├────────┼────────┴────────┴────────┘
-                                                      zzzz,             zzzz
+                                                      zzzz,                zzzz
     //                                             └────────┘           └────────┘
     )
 
