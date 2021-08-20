@@ -19,13 +19,24 @@
 #define MOUSEKEY_WHEEL_DELAY 0
 
 /* key matrix size */
-#define MATRIX_ROWS 2
-#define MATRIX_COLS 1
+#define MATRIX_ROWS 5
+#define MATRIX_COLS 5
+
+/*
+ * Keyboard Matrix Assignments
+ *
+ * Change this to how you wired your keyboard
+ * COLS: AVR pins used for columns, left to right
+ * ROWS: AVR pins used for rows, top to bottom
+ * DIODE_DIRECTION: COL2ROW = COL = Anode (+), ROW = Cathode (-, marked on diode)
+ *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
+ *
+ */
 
 /* key matrix pins */
-#define MATRIX_ROW_PINS { B3, B1 } // , C6, D7, E6 }
+#define MATRIX_ROW_PINS { F4, F5, F6, F7, B1 }
 
-#define MATRIX_COL_PINS { B2 } // , C1, B2, B6, B5, B4 }
+#define MATRIX_COL_PINS { D3, D2, D1, D0, D4 }
 #define UNUSED_PINS
 
 /* COL2ROW or ROW2COL */
@@ -61,8 +72,8 @@
 // #define COMBO_ALLOW_ACTION_KEYS
 #define COMBO_TERM 150
 
-#define RGB_DI_PIN B6
-#define RGBLED_NUM 2
+#define RGB_DI_PIN E6
+#define RGBLED_NUM 6
 // #define RGBLED_SPLIT
 
 #define RGBLIGHT_LAYERS
