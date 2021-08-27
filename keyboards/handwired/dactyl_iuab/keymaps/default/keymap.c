@@ -77,8 +77,8 @@ void keyboard_post_init_user(void) {
   debug_matrix=true;
   debug_keyboard=true;
   print("post init");
-  for (int i = 0; i < 7; i++) {
-      switch (i % 8) {
+  for (int i = 0; i < RGBLED_NUM; i++) {
+      switch (i % 6) {
           case 0:
             setrgb(0xff, 0, 0, &led[i]);
             break;
@@ -96,12 +96,6 @@ void keyboard_post_init_user(void) {
             break;
           case 5:
             setrgb(0, 0xff, 0xff, &led[i]);
-            break;
-          case 6:
-            setrgb(0x77, 0x77, 0, &led[i]);
-            break;
-          case 7:
-            setrgb(0xff, 0xff, 0xff, &led[i]);
             break;
       }
   }

@@ -19,8 +19,8 @@
 #define MOUSEKEY_WHEEL_DELAY 0
 
 /* key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 5
+#define MATRIX_ROWS 6
+#define MATRIX_COLS 6
 
 /*
  * Keyboard Matrix Assignments
@@ -34,13 +34,13 @@
  */
 
 /* key matrix pins */
-#define MATRIX_ROW_PINS { F4, F5, F6, F7, B1 }
+#define MATRIX_ROW_PINS { F4, F5, F6, F7, B1, B2 }
 
-#define MATRIX_COL_PINS { D3, D2, D1, D0, D4 }
+#define MATRIX_COL_PINS { D3, D2, D1, D0, D4, C6 }
 #define UNUSED_PINS
 
 /* COL2ROW or ROW2COL */
-#if 0
+#if 1
 #define DIODE_DIRECTION COL2ROW
 #else
 #define DIODE_DIRECTION ROW2COL
@@ -73,7 +73,7 @@
 #define COMBO_TERM 150
 
 #define RGB_DI_PIN E6
-#define RGBLED_NUM 6
+#define RGBLED_NUM 30
 // #define RGBLED_SPLIT
 
 #define RGBLIGHT_LAYERS
