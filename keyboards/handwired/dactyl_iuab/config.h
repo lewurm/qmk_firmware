@@ -51,8 +51,8 @@
 
 #define RETRO_TAPPING
 
-// #define ENCODERS_PAD_A { B1 }
-// #define ENCODERS_PAD_B { B3 }
+#define ENCODERS_PAD_A { D7 }
+#define ENCODERS_PAD_B { B4 }
 
 #define ENCODER_RESOLUTION 2
 
@@ -67,10 +67,6 @@
 
 /* Locking resynchronize hack */
 // #define LOCKING_RESYNC_ENABLE
-
-#define COMBO_COUNT 16
-// #define COMBO_ALLOW_ACTION_KEYS
-#define COMBO_TERM 150
 
 #define RGB_DI_PIN E6
 #define RGBLED_NUM 30
