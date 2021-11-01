@@ -57,4 +57,4 @@ BOOTLOADER = atmel-dfu
 TAP_DANCE_ENABLE = no
 COMBO_ENABLE = no
 
-ENCODER_ENABLE = no # for now; yes
+ENCODER_ENABLE = yes
