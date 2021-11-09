@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x6071
 #define DEVICE_VER      0x0002
-#define MANUFACTURER    WoodKeys.click
+#define MANUFACTURER    bigbuttonturn
 #define PRODUCT         BigSeries Single Keyboard
 
 /* key matrix size */
@@ -31,8 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COLS 1
 
 /* key matrix pins */
-#define MATRIX_ROW_PINS { B0 }
-#define MATRIX_COL_PINS { B4 }
+#define MATRIX_ROW_PINS { D6 }
+#define MATRIX_COL_PINS { C7 }
 #define UNUSED_PINS
 
 /* COL2ROW or ROW2COL */
