@@ -35,14 +35,7 @@ enum {
 static tap_dance_state_enum tap_dance_state;
 static bool tap_dance_active = false;
 static uint16_t timer;
-
-static void wait_10ms(void) {
-    uint16_t before = timer_read();
-    if (before > 0xfff0) {
-        before = 0;
-    }
-    while ((before + 3) > timer_read());
-}
+static bool lights_state = true;
 
 void dance_cycle(bool override_timer) {
   if (tap_dance_active)
@@ -114,11 +107,13 @@ void dance_finished(qk_tap_dance_state_t *state, void* user_data) {
       // VS Build: CTRL+SHIFT+B
       send_string_with_delay_P(PSTR(SS_DOWN(X_LCTRL) SS_DOWN(X_LSHIFT) "b" SS_UP(X_LSHIFT) SS_UP(X_LCTRL)), 10);
 #else
-      writePinHigh(TRIGGER_PIN);
-      wait_10ms();
-      writePinLow(TRIGGER_PIN);
-      wait_10ms();
-      writePinHigh(TRIGGER_PIN);
+      if (lights_state) {
+          lights_state = false;
+          writePinHigh(TRIGGER_PIN);
+      } else {
+          lights_state = true;
+          writePinLow(TRIGGER_PIN);
+      }
 #endif
       tap_dance_active = false;
       break;
@@ -163,6 +158,7 @@ void matrix_scan_user(void) {
   if (!first_run) {
       setPinOutput(TRIGGER_PIN);
       writePinHigh(TRIGGER_PIN);
+      lights_state = false;
       first_run = 1;
   }
   dance_cycle(false);
